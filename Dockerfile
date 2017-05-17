@@ -13,6 +13,7 @@ ENV LHOST= \
     MSF_DATABASE_CONFIG=/usr/share/metasploit-framework/config/database.yml
 
 COPY pax-pre-install /usr/local/sbin/pax-pre-install
+RUN chmod 777 /usr/local/sbin/pax-pre-install
 
 RUN echo $DEPENDENCY_BUSTER > /dev/null
 
