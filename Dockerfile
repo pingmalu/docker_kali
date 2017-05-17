@@ -31,6 +31,8 @@ RUN /usr/local/sbin/pax-pre-install --install \
     >> /etc/apt/sources.list.d/kali.list \
  && apt-key adv --keyserver pgp.mit.edu --recv-keys ED444FF07D8D0BF6
 
+RUN rm -vfr /var/lib/apt/lists/*
+
 RUN apt update
 
 RUN apt install -y --no-install-recommends \
