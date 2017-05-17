@@ -29,11 +29,11 @@ RUN /usr/local/sbin/pax-pre-install --install \
     > /etc/apt/sources.list.d/kali.list \
  && echo "deb-src http://mirrors.aliyun.com/kali kali-rolling main contrib non-free" \
     >> /etc/apt/sources.list.d/kali.list \
- #&& apt-key adv --keyserver pgp.mit.edu --recv-keys ED444FF07D8D0BF6 \
+ && apt-key adv --keyserver pgp.mit.edu --recv-keys ED444FF07D8D0BF6
 
- && apt update \
+RUN apt update
 
- && apt install -y --no-install-recommends \
+RUN apt install -y --no-install-recommends \
     less vim build-essential libreadline-dev libssl-dev libpq5 \
     libpq-dev libreadline5 libsqlite3-dev libpcap-dev \
     subversion git-core autoconf pgadmin3 curl zlib1g-dev libxml2-dev \
