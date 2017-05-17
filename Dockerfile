@@ -110,6 +110,8 @@ ADD bin/* /bin/
 
 ADD loader /
 
+RUN chmod 777 /loader
+
 RUN /loader cache build
 
 ENTRYPOINT ["/loader"]
