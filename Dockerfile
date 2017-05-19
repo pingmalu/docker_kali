@@ -18,10 +18,9 @@ RUN chmod 777 /usr/local/sbin/pax-pre-install
 RUN echo $DEPENDENCY_BUSTER > /dev/null
 
 COPY sources.list /etc/apt/sources.list
+RUN /usr/local/sbin/pax-pre-install --install
 COPY kali.list /etc/apt/sources.list.d/kali.list
-
-RUN /usr/local/sbin/pax-pre-install --install \
- && apt-key adv --keyserver pgp.mit.edu --recv-keys ED444FF07D8D0BF6
+RUN apt-key adv --keyserver pgp.mit.edu --recv-keys ED444FF07D8D0BF6
 
 #RUN rm -vfr /var/lib/apt/lists/*
 
