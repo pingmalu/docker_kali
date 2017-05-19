@@ -17,18 +17,10 @@ RUN chmod 777 /usr/local/sbin/pax-pre-install
 
 RUN echo $DEPENDENCY_BUSTER > /dev/null
 
-#RUN sed -i '1i\deb http://mirrors.aliyun.com/debian/ stretch main non-free contrib\n \
-#deb http://mirrors.aliyun.com/debian/ stretch-proposed-updates main non-free contrib\n \
-#deb-src http://mirrors.aliyun.com/debian/ stretch main non-free contrib\n \
-#deb-src http://mirrors.aliyun.com/debian/ stretch-proposed-updates main non-free contrib' /etc/apt/sources.list
-
 COPY sources.list /etc/apt/sources.list
+COPY kali.list /etc/apt/sources.list.d/kali.list
 
 RUN /usr/local/sbin/pax-pre-install --install \
- && echo "deb http://mirrors.ustc.edu.cn/kali kali-rolling main contrib non-free" \
-    > /etc/apt/sources.list.d/kali.list \
- && echo "deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main contrib non-free" \
-    >> /etc/apt/sources.list.d/kali.list \
  && apt-key adv --keyserver pgp.mit.edu --recv-keys ED444FF07D8D0BF6
 
 #RUN rm -vfr /var/lib/apt/lists/*
