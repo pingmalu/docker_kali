@@ -4,9 +4,6 @@ FROM kalilinux/kali-linux-docker
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-ADD rootfile/ /
-ADD root/ /root
-
 ENV DEBIAN_FRONTEND noninteractive
 
 COPY sources.list /etc/apt/sources.list
@@ -22,6 +19,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install openssh-
     apt-get clean && \
     apt-get autoclean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+ADD rootfile/ /
+ADD root/ /root
 
 VOLUME ["/root","/app"]
 
