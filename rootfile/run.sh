@@ -37,7 +37,7 @@ if [ "${MYENV}" == "**None**" ] || [ "${MYENV}" == "" ]; then
 else
     mkdir -p '/app/mybash/'${MYENV}
     if [ ! -f '/app/mybash/'${MYENV}'/run.sh' ] ; then
-        cp /home/mybash/run.sh '/app/mybash/'${MYENV}'/run.sh'
+        cp /mybash_run.sh '/app/mybash/'${MYENV}'/run.sh'
     fi
     awk 'BEGIN { cmd="cp -ri /home/mybash/root /app/mybash/'${MYENV}'/"; print "n" |cmd; }'
 fi
